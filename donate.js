@@ -1,5 +1,3 @@
-<script type="text/javascript">
 
 console.log("this has worked!")
-
-</script>
+alert('This is the script working')
