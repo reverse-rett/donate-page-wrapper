@@ -1,52 +1,65 @@
 
-// position header
+//=============================
+// position and colour header
 $('.__layout_header_inner').css('text-align', 'center');
-$('h1').css('color', '#322a7e');
+$('body > div.__layout_header_inner > div > h1').html('');
+$('h3').css('color', '#fff');
+$('.__layout_header_inner').css('border-top', 'unset');
+$('.__layout_header_inner').css('border-bottom', 'unset');
 
-// make the form 60% width and center
-$('.__layout_page').css('width', '60%');
+//=============================
+// make the form 80% width, style and center
+$('.__layout_page').css('width', '80%');
+$('.__layout_page').css('max-width', '400px');
 $('.__layout_page').css('margin', '0 auto');
 $('.__layout_page').css('background-color', '#00d1a4');
 $('.__layout_page').css('color', '#fff');
+$('.__layout_page').css('border-radius', '20px');
+$('.__layout_page').css('min-height', '450px');
 
 
-$('#CreditCardForm').hide()
+//=============================
+// hide unneccessary menu items
+$('#menu-mini-nav').hide()
 
-// // headers in white
-// $('h3').css('color', '#fff');
+//=============================
+// hide the form by item
 
-// // hide name details
-// $('#CreditCardForm > h3:nth-child(1)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(2)').css('display', 'none');
+// hide name details
+$('#CreditCardForm > h3:nth-child(1)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(2)').css('display', 'none');
 
-// // hide address header, lines 1 and 2, town/city/postcode
-// $('#CreditCardForm > h3:nth-child(3)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(4)').css('display','none');
-// $('#CreditCardForm > div:nth-child(5)').css('display','none');
+// hide address header, lines 1 and 2, town/city/postcode
+$('#CreditCardForm > h3:nth-child(3)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(4)').css('display','none');
+$('#CreditCardForm > div:nth-child(5)').css('display','none');
 
-// // hide contact details
-// $('#CreditCardForm > h3:nth-child(6)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(7)').css('display', 'none');
+// hide contact details
+$('#CreditCardForm > h3:nth-child(6)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(7)').css('display', 'none');
 
-// // payment details
-// $('#CreditCardForm > h3:nth-child(8)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(9)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(10)').css('display', 'none');
+// payment details
+$('#CreditCardForm > h3:nth-child(8)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(9)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(10)').css('display', 'none');
 
-// // gift aid
-// $('#CreditCardForm > h3:nth-child(11)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(12)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(14)').css('display', 'none');
-// $('#CreditCardForm > h3:nth-child(15)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(16)').css('display', 'none');
-// $('#CreditCardForm > div:nth-child(17)').css('display', 'none');
+// gift aid
+$('#CreditCardForm > h3:nth-child(11)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(12)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(14)').css('display', 'none');
+$('#CreditCardForm > h3:nth-child(15)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(16)').css('display', 'none');
+$('#CreditCardForm > div:nth-child(17)').css('display', 'none');
 
-// // submit
-// $('#CreditCardForm > table > tbody > tr > td').css('display', 'none');
+// submit
+$('#CreditCardForm > table > tbody > tr > td').css('display', 'none');
 
-// background
+// hide form entirely
+//$('#CreditCardForm').hide()
+
+//=============================
+// page background
 $('body').css('background', 'url("https://www.reverserett.org.uk/core/media/Copy-of-inter.jpg")');
-$('body').css('opacity', '1');
 $('body').css('top', '0');
 $('body').css('left', '0');
 $('body').css('bottom', '0');
@@ -59,7 +72,27 @@ $('body').css('-moz-background-size', 'cover');
 $('body').css('-webkit-background-size', 'cover');
 $('body').css('background-size', 'cover');
 $('body').css('z-index', '-1');
-$('body').css('', '');
+
+//=============================
+// make the bits of the form
+$('.__layout_page').prepend('<div class="donate-header"><h2>Chip in to power our community!</h2></div>');
+$('.donate-header').css('width', '100%');
+$('.donate-header').css('text-align', 'center');
+$('.donate-header').css('padding-top', '10px');
+
+// donation amount and recurrence
+
+
+// contact details
+
+
+// address
+
+
+// card details
+
+
+
 
 
 
@@ -90,12 +123,5 @@ $('body').css('', '');
 // <input type="text" size="2" id="ExpiryMonth" name="ExpiryMonth" class="expiry-date numberOnly" data-stripe="exp-month" placeholder="MM" maxlength="2">
 // <input type="text" size="2" id="ExpiryYear" name="ExpiryYear" class="expiry-date numberOnly" data-stripe="exp-year" placeholder="YY" maxlength="2">
 // <input type="text" size="2" id="ExpiryYear" name="ExpiryYear" class="expiry-date numberOnly" data-stripe="exp-year" placeholder="YY" maxlength="2">
-
-
-
-
-
-
-
 
 
