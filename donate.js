@@ -12,11 +12,10 @@ $('.__layout_header_inner').css('border-bottom', 'unset');
 $('.__layout_page').css('width', '80%');
 $('.__layout_page').css('max-width', '400px');
 $('.__layout_page').css('margin', '0 auto');
-$('.__layout_page').css('background-color', '#00d1a4');
+$('.__layout_page').css('background-color', '#fff');
 $('.__layout_page').css('color', '#fff');
 $('.__layout_page').css('border-radius', '20px');
 $('.__layout_page').css('min-height', '450px');
-
 
 //=============================
 // hide unneccessary menu items
@@ -75,10 +74,37 @@ $('body').css('z-index', '-1');
 
 //=============================
 // make the bits of the form
-$('.__layout_page').prepend('<div class="donate-header"><h2>Chip in to power our community!</h2></div>');
+
+var widget_content = `
+
+<div class="donate-header">
+    <h2>Chip in to power our community!</h2>
+</div>
+<div class="donate-body" style="height: 200px; background-color: #fff;">
+    <table class="amounts">
+        <tbody>
+            <tr>
+                <td>
+                    <label> class
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</table>
+</div>
+
+`
+
+// header
+$('.__layout_page').prepend(widget_content);
+
+// styling
 $('.donate-header').css('width', '100%');
 $('.donate-header').css('text-align', 'center');
-$('.donate-header').css('padding-top', '10px');
+$('.donate-header').css('padding', '20px');
+$('.__wrap_standard').hide();
+
+
 
 // donation amount and recurrence
 
