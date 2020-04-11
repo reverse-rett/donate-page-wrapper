@@ -95,7 +95,7 @@ var widget_content = `
     </div>
     <div class="donate-footer" style="height: 100px;">
         <div class="row" style="padding-top: 20px;">
-            <button class="next-button" onClick="next-action();">Next</button>
+            <button class="next-button" onClick="next_action();">Next</button>
         </div>
     </div>
 
@@ -125,8 +125,8 @@ $('td').css('border', 'none');
 
 //=============================
 // first slide
-$(`#CreditCardForm > h3:nth-child(1), 
-   #CreditCardForm > div:nth-child(2)`).show();
+// $(`#CreditCardForm > h3:nth-child(1), 
+//    #CreditCardForm > div:nth-child(2)`).show();
 
 
 // contact details
@@ -138,7 +138,9 @@ $(`#CreditCardForm > h3:nth-child(1),
 // card details
 
 
-
+next_action = function(e){
+    console.log(e)
+}
 
 
 
