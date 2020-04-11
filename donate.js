@@ -1,21 +1,21 @@
 
 //=============================
 // position and colour header
-$('.__layout_header_inner').css('text-align', 'center');
 $('body > div.__layout_header_inner > div > h1').html('');
 $('h3').css('color', '#fff');
-$('.__layout_header_inner').css('border-top', 'unset');
-$('.__layout_header_inner').css('border-bottom', 'unset');
+$('.__layout_header_inner').css({'border-top': 'unset',
+                                 'border-bottom': 'unset',
+                                 'text-align': 'center'});
 
 //=============================
 // make the form 80% width, style and center
-$('.__layout_page').css('width', '80%');
-$('.__layout_page').css('max-width', '400px');
-$('.__layout_page').css('margin', '0 auto');
-$('.__layout_page').css('background-color', '#fff');
-$('.__layout_page').css('color', '#fff');
-$('.__layout_page').css('border-radius', '20px');
-$('.__layout_page').css('min-height', '450px');
+$('.__layout_page').css({'width': '80%',
+                         'max-width': '400px',
+                         'margin': '0 auto',
+                         'background-color': '#fff',
+                         'color': '#fff',
+                         'border-radius': '20px',
+                         'min-height': '250px'});
 
 //=============================
 // hide unneccessary menu items
@@ -25,88 +25,108 @@ $('#menu-mini-nav').hide()
 // hide the form by item
 
 // hide name details
-$('#CreditCardForm > h3:nth-child(1)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(2)').css('display', 'none');
+$(`#CreditCardForm > h3:nth-child(1), 
+   #CreditCardForm > div:nth-child(2)`).hide();
 
 // hide address header, lines 1 and 2, town/city/postcode
-$('#CreditCardForm > h3:nth-child(3)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(4)').css('display','none');
-$('#CreditCardForm > div:nth-child(5)').css('display','none');
+$(`#CreditCardForm > h3:nth-child(3),
+   #CreditCardForm > div:nth-child(4),
+   #CreditCardForm > div:nth-child(5)`).hide();
 
 // hide contact details
-$('#CreditCardForm > h3:nth-child(6)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(7)').css('display', 'none');
+$(`#CreditCardForm > h3:nth-child(6),
+   #CreditCardForm > div:nth-child(7)`).hide();
 
 // payment details
-$('#CreditCardForm > h3:nth-child(8)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(9)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(10)').css('display', 'none');
+$(`#CreditCardForm > h3:nth-child(8),
+   #CreditCardForm > div:nth-child(9),
+   #CreditCardForm > div:nth-child(10)`).hide();
 
 // gift aid
-$('#CreditCardForm > h3:nth-child(11)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(12)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(14)').css('display', 'none');
-$('#CreditCardForm > h3:nth-child(15)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(16)').css('display', 'none');
-$('#CreditCardForm > div:nth-child(17)').css('display', 'none');
+$(`#CreditCardForm > h3:nth-child(11),
+   #CreditCardForm > div:nth-child(12),
+   #CreditCardForm > div:nth-child(14),
+   #CreditCardForm > h3:nth-child(15),
+   #CreditCardForm > div:nth-child(16),
+   #CreditCardForm > div:nth-child(17)`).hide()
 
 // submit
-$('#CreditCardForm > table > tbody > tr > td').css('display', 'none');
+$('#CreditCardForm > table > tbody > tr > td').hide();
 
 // hide form entirely
 //$('#CreditCardForm').hide()
 
 //=============================
 // page background
-$('body').css('background', 'url("https://www.reverserett.org.uk/core/media/Copy-of-inter.jpg")');
-$('body').css('top', '0');
-$('body').css('left', '0');
-$('body').css('bottom', '0');
-$('body').css('right', '0');
-$('body').css('background-repeat', 'no-repeat');
-$('body').css('background-position', 'center');
-$('body').css('-ms-background-size', 'cover');
-$('body').css('-o-background-size', 'cover');
-$('body').css('-moz-background-size', 'cover');
-$('body').css('-webkit-background-size', 'cover');
-$('body').css('background-size', 'cover');
-$('body').css('z-index', '-1');
+$('body').css({'background': 'url("https://www.reverserett.org.uk/core/media/Copy-of-inter.jpg")',
+               'top': '0',
+               'left': '0',
+               'bottom': '0',
+               'right': '0',
+               'background-repeat': 'no-repeat',
+               'background-position': 'center',
+               '-ms-background-size': 'cover',
+               '-o-background-size': 'cover',
+               '-moz-background-size': 'cover',
+               '-webkit-background-size': 'cover',
+               'background-size': 'cover',
+               'z-index': '-1'});
 
 //=============================
 // make the bits of the form
 
 var widget_content = `
 
-<div class="donate-header">
-    <h2>Chip in to power our community!</h2>
-</div>
-<div class="donate-body" style="height: 200px; background-color: #fff;">
-    <table class="amounts">
-        <tbody>
-            <tr>
-                <td>
-                    <label> class
-                </td>
-            </tr>
-        </tbody>
+    <div class="donate-header">
+        <h2>Chip in to power our community!</h2>
+    </div>
+    <div class="donate-body" style="max-height: 500px; background-color: #fff;">
+        <table class="amounts" style="display: none;">
+            <tbody>
+                <tr>
+                    <td>
+                        <label></label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </table>
-</table>
-</div>
+    <div class="form-wrapper row"></div>
+    </div>
+    <div class="donate-footer" style="height: 100px;">
+        <div class="row" style="padding-top: 20px;">
+            <button class="next-button" onClick="next-action();">Next</button>
+        </div>
+    </div>
 
 `
 
 // header
 $('.__layout_page').prepend(widget_content);
 
-// styling
-$('.donate-header').css('width', '100%');
-$('.donate-header').css('text-align', 'center');
-$('.donate-header').css('padding', '20px');
+// styling header
+$('.donate-header').css({'width': '100%',
+                         'text-align': 'center',
+                         'padding': '20px'});
+
+// styling body
+$('.form-wrapper').css({'width': '100%'})
+$('.form-wrapper').append($('#CreditCardForm'));
+$('#CreditCardForm').css({'width': '75%',
+                          'margin': '0 auto'})
+
+// styling footer
+$('.next-button').css({'margin': '0 auto',
+                       'border-radius': '10px'});
+$('.donate-footer').css('border-radius', '20px')
 $('.__wrap_standard').hide();
+$('td').css('border', 'none');
 
 
-
-// donation amount and recurrence
+//=============================
+// first slide
+$(`#CreditCardForm > h3:nth-child(1), 
+   #CreditCardForm > div:nth-child(2)`).show();
 
 
 // contact details
