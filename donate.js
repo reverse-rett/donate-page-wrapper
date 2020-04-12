@@ -7,6 +7,9 @@ $('.__layout_header_inner').css({'border-top': 'unset',
                                  'border-bottom': 'unset',
                                  'text-align': 'center'});
 
+// hide the footer
+$('footer').hide()
+
 //=============================
 // make the form 80% width, style and center
 $('.__layout_page').css({'width': '80%',
@@ -74,18 +77,77 @@ $('body').css({'background': 'url("https://www.reverserett.org.uk/core/media/Cop
 
 //=============================
 // make the bits of the form
-
 var widget_content = `
-
     <div class="donate-header">
         <h2>Chip in to power our community!</h2>
     </div>
+    <div class="spacer row" style="height: 15px;"></div>
     <div class="donate-body" style="max-height: 500px; background-color: #fff;">
-        <table class="amounts" style="display: none;">
+        <table class="amounts">
             <tbody>
                 <tr>
-                    <td>
-                        <label></label>
+                    <td style="width: 30%;">
+                        <label class="amount-button" 
+                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                            <span class="radio">£5</span>
+                        </label>
+                    </td>
+                    <td style="width: 30%;">
+                        <label class="amount-button" 
+                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                            <span class="radio">£10</span>
+                        </label>
+                    </td>
+                    <td style="width: 30%;">
+                        <label class="amount-button" 
+                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                            <span class="radio">£15</span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">
+                        <label class="amount-button" 
+                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                            <span class="radio">£25</span>
+                        </label>
+                    </td>
+                    <td style="width: 30%;">
+                        <label class="amount-button" 
+                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                            <span class="radio">£50</span>
+                        </label>
+                    </td>
+                    <td style="width: 30%;">
+                        <label class="amount-button" 
+                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                            <span class="radio">£100</span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">
+                        <label class="amount-button" 
+                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                            <span class="radio">£150</span>
+                        </label>
+                    </td>
+                    <td style="position: relative;">
+                        <!--<input id="q_other" name="amount" value="other" type="radio" data-parsley-multiple="amount" 
+                        data-parsley-required="true" data-parsley-errors-container="#amount-error" 
+                        data-parsley-required-message="Please select an amount." data-parsley-group="section1">-->
+                        <label for="q_other">£</label>
+                        <input size="4" onkeyup="if (!(this.value == '')) document.contribution.amount[7].checked=true;" i
+                        ntl_currency_symbol="GBP" id="amount_other" name="amount_other" type="tel" 
+                        placeholder="Other amount" data-parsley-type="number" data-parsley-group="section1"
+                        style="width: 230%; margin-bottom: 0px !important;">
                     </td>
                 </tr>
             </tbody>
@@ -95,11 +157,13 @@ var widget_content = `
     </div>
     <div class="donate-footer" style="height: 100px;">
         <div class="row" style="padding-top: 20px;">
-            <button class="next-button" onClick="next_action();">Next</button>
+            <button class="next-button" onclick="next_action();">Next</button>
         </div>
     </div>
-
 `
+
+//=============================
+// make the form work
 
 // header
 $('.__layout_page').prepend(widget_content);
@@ -109,12 +173,6 @@ $('.donate-header').css({'width': '100%',
                          'text-align': 'center',
                          'padding': '20px'});
 
-// styling body
-$('.form-wrapper').css({'width': '100%'})
-$('.form-wrapper').append($('#CreditCardForm'));
-$('#CreditCardForm').css({'width': '75%',
-                          'margin': '0 auto'})
-
 // styling footer
 $('.next-button').css({'margin': '0 auto',
                        'border-radius': '10px'});
@@ -122,27 +180,38 @@ $('.donate-footer').css('border-radius', '20px')
 $('.__wrap_standard').hide();
 $('td').css('border', 'none');
 
+// styling body
+$('.form-wrapper').css({'width': '100%',
+                        'height': '0px'});
+$('.form-wrapper').append($('#CreditCardForm'));
+$('#CreditCardForm').css({'width': '75%',
+                          'margin': '0 auto'});
 
-//=============================
-// first slide
-// $(`#CreditCardForm > h3:nth-child(1), 
-//    #CreditCardForm > div:nth-child(2)`).show();
+// buttons and other
+$('.amounts').css({'width': '90%',
+                   'margin': '0 auto'});
+$('.radio').css('font-weight', 'bolder');
+$('.amount-button').css({'background-color': '#322a7e',
+                         'color': '#00eeb6',
+                         'text-align': 'center',
+                         'padding': '8px 2px 2px',
+                         'padding-top': '8px',
+                         'border-radius': '7px',
+                         'width': '100%'});
+$('td:first-child, td:last-child').css('padding', '12px 15px 12px 15px');
+$('table.amounts label[for="q_other"]').css({'position': 'absolute',
+                                             'top': '24px',
+                                             'color': '#322a7e',
+                                             'display': 'block'});
+$('html body input[type="tel"]').css({'text-align': 'center',
+                                      'color': '#322a7e'});
 
-
-// contact details
-
-
-// address
-
-
-// card details
-
-
-next_action = function(e){
-    console.log(e)
+next_action = function(){
+    console.log("next clicked")
 }
 
 
+// link everything back to the form and post
 
 // <input type="text" name="Title" class="required" placeholder="Title" id="Title" maxlength="50">
 // <input type="text" name="FirstName" class="required" placeholder="First Name*" id="FirstName" maxlength="50">
