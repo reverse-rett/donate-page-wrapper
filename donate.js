@@ -1,5 +1,9 @@
 
 //=============================
+// add wrapper css
+$('head').append('<link rel="stylesheet" href="wrapper.css" type="text/css" />');
+
+//=============================
 // position and colour header
 $('body > div.__layout_header_inner > div > h1').html('');
 $('h3').css('color', '#fff');
@@ -83,77 +87,7 @@ var widget_content = `
     </div>
     <div class="spacer row" style="height: 15px;"></div>
     <div class="donate-body" style="max-height: 500px; background-color: #fff;">
-        <table class="amounts">
-            <tbody>
-                <tr>
-                    <td style="width: 30%;">
-                        <label class="amount-button" 
-                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
-                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
-                            <span class="radio">£5</span>
-                        </label>
-                    </td>
-                    <td style="width: 30%;">
-                        <label class="amount-button" 
-                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
-                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
-                            <span class="radio">£10</span>
-                        </label>
-                    </td>
-                    <td style="width: 30%;">
-                        <label class="amount-button" 
-                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
-                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
-                            <span class="radio">£15</span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 30%;">
-                        <label class="amount-button" 
-                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
-                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
-                            <span class="radio">£25</span>
-                        </label>
-                    </td>
-                    <td style="width: 30%;">
-                        <label class="amount-button" 
-                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
-                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
-                            <span class="radio">£50</span>
-                        </label>
-                    </td>
-                    <td style="width: 30%;">
-                        <label class="amount-button" 
-                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
-                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
-                            <span class="radio">£100</span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 30%;">
-                        <label class="amount-button" 
-                               onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
-                               onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
-                            <span class="radio">£150</span>
-                        </label>
-                    </td>
-                    <td style="position: relative;">
-                        <!--<input id="q_other" name="amount" value="other" type="radio" data-parsley-multiple="amount" 
-                        data-parsley-required="true" data-parsley-errors-container="#amount-error" 
-                        data-parsley-required-message="Please select an amount." data-parsley-group="section1">-->
-                        <label for="q_other">£</label>
-                        <input size="4" onkeyup="if (!(this.value == '')) document.contribution.amount[7].checked=true;" i
-                        ntl_currency_symbol="GBP" id="amount_other" name="amount_other" type="tel" 
-                        placeholder="Other amount" data-parsley-type="number" data-parsley-group="section1"
-                        style="width: 230%; margin-bottom: 0px !important;">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </table>
-    <div class="form-wrapper row"></div>
+        <div class="form-wrapper row"></div>
     </div>
     <div class="donate-footer" style="height: 100px;">
         <div class="row" style="padding-top: 20px;">
@@ -162,11 +96,99 @@ var widget_content = `
     </div>
 `
 
+var amounts_content = `
+    <table class="amounts">
+        <tbody>
+            <tr>
+                <td style="width: 30%;">
+                    <label class="amount-button" 
+                           onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                           onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                        <span class="radio">£5</span>
+                    </label>
+                </td>
+                <td style="width: 30%;">
+                    <label class="amount-button" 
+                           onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                           onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                        <span class="radio">£10</span>
+                    </label>
+                </td>
+                <td style="width: 30%;">
+                    <label class="amount-button" 
+                           onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                           onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                        <span class="radio">£15</span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">
+                    <label class="amount-button" 
+                           onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                           onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                        <span class="radio">£25</span>
+                    </label>
+                </td>
+                <td style="width: 30%;">
+                    <label class="amount-button" 
+                           onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                           onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                        <span class="radio">£50</span>
+                    </label>
+                </td>
+                <td style="width: 30%;">
+                    <label class="amount-button" 
+                           onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                           onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                        <span class="radio">£100</span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">
+                    <label class="amount-button" 
+                           onmouseover="this.style.color='#322a7e'; this.style.backgroundColor='#00eeb6';" 
+                           onmouseout="this.style.color='#00eeb6'; this.style.backgroundColor='#322a7e';">
+                        <span class="radio">£150</span>
+                    </label>
+                </td>
+                <td style="position: relative;">
+                    <!--<input id="q_other" name="amount" value="other" type="radio" data-parsley-multiple="amount" 
+                    data-parsley-required="true" data-parsley-errors-container="#amount-error" 
+                    data-parsley-required-message="Please select an amount." data-parsley-group="section1">-->
+                    <label for="q_other">£</label>
+                    <input size="4"  intl_currency_symbol="GBP" id="amount_other" name="amount_other" type="tel" 
+                    placeholder="Other amount" data-parsley-type="number" data-parsley-group="section1"
+                    style="width: 230%; margin-bottom: 0px !important;">
+                </td>
+            </tr>
+        </tbody>
+    </table
+`
+
+var contact_1_content = `
+    <div class="contact-1" style="width: 90%; margin: 0 auto;">
+        <input placeholder="First name"></input>
+    </div>
+`
+
+var contact_2_content = ``
+
+
+var payment_content = ``
+
+
+var last_slide_content = ``
+
+
 //=============================
 // make the form work
 
 // header
 $('.__layout_page').prepend(widget_content);
+$('.donate-body').append(amounts_content);
+$('.donate-body').append(contact_1_content);
 
 // styling header
 $('.donate-header').css({'width': '100%',
@@ -206,8 +228,16 @@ $('table.amounts label[for="q_other"]').css({'position': 'absolute',
 $('html body input[type="tel"]').css({'text-align': 'center',
                                       'color': '#322a7e'});
 
+
+
 next_action = function(){
-    console.log("next clicked")
+  if ($('.amounts').is(':visible')) {
+    $('.amounts').hide();
+    $('.contacts-1').show();
+  } else if (true) {
+    $('.contacts-1').hide();
+    $('.contacts-2').show();
+  }
 }
 
 
