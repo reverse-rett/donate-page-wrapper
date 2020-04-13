@@ -1,7 +1,7 @@
 
 //=============================
 // add wrapper css
-$('head').append('<link rel="stylesheet" href="wrapper.css" type="text/css" />');
+$('head').append('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lluismather/rr-donate-form@master/wrapper.css" type="text/css" />');
 
 //=============================
 // position and colour header
@@ -168,18 +168,98 @@ var amounts_content = `
 `
 
 var contact_1_content = `
-    <div class="contact-1" style="width: 90%; margin: 0 auto;">
-        <input placeholder="First name"></input>
-    </div>
+    <table class="contact-1" style="display:none;">
+        <tbody>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Title">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Forename">
+                </td>
+            </tr>
+                <td>
+                    <input class="row" size="4" placeholder="Surname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Email address">
+                </td>
+            </tr>
+        </tbody>
+    </table>
 `
 
-var contact_2_content = ``
+var contact_2_content = `
+    <table class="contact-2" style="display: none;">
+        <tbody>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Address Line 1">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Address Line 2">
+                </td>
+            </tr>
+                <td>
+                    <input class="row" size="4" placeholder="Town">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="County">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Postcode">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+`
 
 
-var payment_content = ``
+var payment_content = `
+    <table class="payment" style="display: none;">
+        <tbody>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Card number">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Card ype">
+                </td>
+            </tr>
+                <td>
+                    <input class="row" size="4" placeholder="Expiry M">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Expiry Y">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="row" size="4" placeholder="Security code">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+`
 
 
-var last_slide_content = ``
+var last_slide_content = `
+    <div><p>Gift Aid and end</p></div>
+`
 
 
 //=============================
@@ -189,6 +269,7 @@ var last_slide_content = ``
 $('.__layout_page').prepend(widget_content);
 $('.donate-body').append(amounts_content);
 $('.donate-body').append(contact_1_content);
+$('.donate-body').append(contact_2_content);
 
 // styling header
 $('.donate-header').css({'width': '100%',
@@ -210,8 +291,8 @@ $('#CreditCardForm').css({'width': '75%',
                           'margin': '0 auto'});
 
 // buttons and other
-$('.amounts').css({'width': '90%',
-                   'margin': '0 auto'});
+$('.amounts, .contact-1').css({'width': '90%',
+                               'margin': '0 auto'});
 $('.radio').css('font-weight', 'bolder');
 $('.amount-button').css({'background-color': '#322a7e',
                          'color': '#00eeb6',
@@ -229,14 +310,23 @@ $('html body input[type="tel"]').css({'text-align': 'center',
                                       'color': '#322a7e'});
 
 
-
 next_action = function(){
   if ($('.amounts').is(':visible')) {
     $('.amounts').hide();
-    $('.contacts-1').show();
-  } else if (true) {
-    $('.contacts-1').hide();
-    $('.contacts-2').show();
+    $('.contact-1').show();
+  } else if ($('.contact-1').is(':visible')) {
+    $('.contact-1').hide();
+    $('.contact-2').show();
+  } else if (($('.contact-2').is(':visible'))){
+    $('.contact-2').hide();
+    $('.payment').show();
+  } else if (($('.payment').is(':visible'))){
+    $('.payment').hide();
+    $('.last-slide').show();
+  } else {
+    $('.last-slide').hide();
+    $('.donate-footer').hide();
+    $('.donate-header').html('<h2>Thank you for your donation!</h2>')
   }
 }
 
