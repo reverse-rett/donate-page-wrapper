@@ -156,7 +156,7 @@ var amounts_content = `
                     data-parsley-required="true" data-parsley-errors-container="#amount-error" 
                     data-parsley-required-message="Please select an amount." data-parsley-group="section1">-->
                     <label for="q_other">£</label>
-                    <input size="4"  intl_currency_symbol="GBP" id="amount_other" name="amount_other" type="tel" 
+                    <input size="4"  intl_currency_symbol="GBP" class="ph" id="amount_other" name="amount_other" type="tel" 
                     placeholder="Other amount" data-parsley-type="number" data-parsley-group="section1"
                     style="width: 230%; margin-bottom: 0px !important;">
                 </td>
@@ -167,25 +167,25 @@ var amounts_content = `
 
 var contact_1_content = `
     <div class="contact-1" style="display:none;">
-        <h3 style="margin-bottom: 30px;">Your Contact Details</h3>
+        <h3 style="margin-bottom: 30px; width: 100%; text-align: center;">Your Contact Details</h3>
         <div class="row">
             <div class="column">
-                <input type="text" name="Title" class="required" placeholder="Title" id="Title" maxlength="50">
+                <input type="text" name="Title" class="required ph" placeholder="Title" id="Title" maxlength="50">
             </div>
         </div>
         <div class="row">
             <div class="column">
-                <input type="text" name="FirstName" class="required" placeholder="First Name*" id="FirstName" maxlength="50">
+                <input type="text" name="FirstName" class="required ph" placeholder="First Name*" id="FirstName" maxlength="50">
             </div>
         </div>
         <div class="row">
             <div class="column">
-                <input type="text" name="LastName" class="required" placeholder="Last Name*" id="LastName" maxlength="50">
+                <input type="text" name="LastName" class="required ph" placeholder="Last Name*" id="LastName" maxlength="50">
             </div>
         </div>
         <div class="row">
             <div class="column">
-                <input type="text" name="EmailAddress" class="required" placeholder="Email Address*" id="EmailAddress" maxlength="50">
+                <input type="text" name="EmailAddress" class="required ph" placeholder="Email Address*" id="EmailAddress" maxlength="50">
             </div>
         </div>
     </div>
@@ -193,77 +193,85 @@ var contact_1_content = `
 
 var contact_2_content = `
     <div class="contact-2" style="display: none;">
-        <h3 style="margin-bottom: 30px;">Your Address</h3>
+        <h3 style="margin-bottom: 30px; width: 100%; text-align: center;">Your Address</h3>
         <div class="row">
             <div class="column">
-                <input type="text" name="Address1" class="" placeholder="Address Line 1" id="Address1" maxlength="50">
+                <input type="text" name="Address1" class="ph" placeholder="Address Line 1" id="Address1" maxlength="50">
             </div>
         </div>
         <div class="row">
             <div class="column">
-                <input type="text" name="Address2" class="" placeholder="Address Line 2" id="Address2" maxlength="50">
+                <input type="text" name="Address2" class="ph" placeholder="Address Line 2" id="Address2" maxlength="50">
             </div>
         </div>
         <div class="row">
             <div class="column">
-                <input type="text" name="Town" class="" placeholder="Town" id="Town" maxlength="50">
+                <input type="text" name="Town" class="ph" placeholder="Town" id="Town" maxlength="50">
             </div>
         </div>
         <div class="row">
             <div class="column">
-                <input type="text" name="County" class="" placeholder="County" id="County" maxlength="50">
+                <input type="text" name="County" class="ph" placeholder="County" id="County" maxlength="50">
             </div>
         </div>
         <div class="row">
             <div class="column">
-                <input type="text" name="Postcode" class="" placeholder="Postcode" id="Postcode" maxlength="10">
+                <input type="text" name="Postcode" class="ph" placeholder="Postcode" id="Postcode" maxlength="10">
             </div>
         </div>
     </div>
 `
 
-
 var payment_content = `
-    <table class="payment" style="display: none;">
-        <tbody>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Card number">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Card ype">
-                </td>
-            </tr>
-                <td>
-                    <input class="row" size="4" placeholder="Expiry M">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Expiry Y">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Security code">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="payment" style="display: none;">
+        <div class="row">
+            <div class="column">
+                <input type="text" class="required card-number numberOnly ph" data-stripe="number" id="CardNumber" maxlength="20" placeholder="Card Number">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                 <select name="CardType" class="" id="CardType" style="color: #322a7e;">
+                     <option value="VISA">Visa</option>
+                     <option value="MC">MasterCard</option>
+                     <option value="AMX">American Express</option>
+                     <option value="DSC">Diners Club</option>
+                     <option value="DCR">Discover</option>
+                     <option value="JCB">JCB</option>
+                  </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <div class="row">
+                    <div class="column">
+                        <input type="text" size="2" id="ExpiryMonth" name="ExpiryMonth" class="expiry-date numberOnly ph" data-stripe="exp-month" placeholder="MM" maxlength="2" style="width: 20%; margin-right: 5%;">
+                        <input type="text" size="2" id="ExpiryYear" name="ExpiryYear" class="expiry-date numberOnly ph" data-stripe="exp-year" placeholder="YY" maxlength="2" style="width: 20%; margin-right: 5%;">
+                        <input type="text" class="required check-cvc numberOnly ph" name="CVC" size="4" data-stripe="cvc" id="CVC" placeholder="CVC" maxlength="4" style="width: 30%;" title="Please enter the security code for the card - usually the last 3 digits on the signature strip">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input id="GiftAid" type="checkbox" style="width: 5%;">
+                <p style="width: 90%; color: #322a7e; display: inline-flex;">I would like Reverse Rett to claim Gift Aid on my donation.</p>
+            </div>
+        </div>
+    </div>
 `
 
-
 var last_slide_content = `
-    <div><p>Gift Aid and end</p></div>
+    <div class="last-slide row" style="display:none; color: #322a7e;">
+        <p>This is where we'll put any other donation text - for example confirming the details and asking person to upsell.</p>
+    </div>
 `
 
 var post_donation = `
     <h2>Success - thank you for your donation!</h2>
     <div class="row">
         <p style="color: #322a7e;">Please help us spread the word to your friends on Facebook, Whatsapp or by email.</p>
-    </div
+    </div>
     <div class="row" style="padding-top: 20px;">
         <button class="last-button" style="background-color: #2f55a4;">Share on Facebook</button>
     </div>
@@ -284,6 +292,8 @@ $('.__layout_page').prepend(widget_content);
 $('.donate-body').append(amounts_content);
 $('.donate-body').append(contact_1_content);
 $('.donate-body').append(contact_2_content);
+$('.donate-body').append(payment_content);
+$('.donate-body').append(last_slide_content);
 
 // styling header
 $('.donate-header').css({'width': '100%',
@@ -303,10 +313,11 @@ $('.form-wrapper').css({'width': '100%',
 $('.form-wrapper').append($('#CreditCardForm'));
 $('#CreditCardForm').css({'width': '75%',
                           'margin': '0 auto'});
+$('body input[type="text"]').css('color', '#322a7e');
 
 // buttons and other
-$('.amounts, .contact-1, .contact-2, .payment').css({'width': '90%',
-                                                     'margin': '0 auto'});
+$('.amounts, .contact-1, .contact-2, .payment, .last-slide').css({'width': '90%',
+                                                                  'margin': '0 auto'});
 $('.radio').css('font-weight', 'bolder');
 $('.amount-button').css({'background-color': '#322a7e',
                          'color': '#00eeb6',
@@ -337,7 +348,7 @@ next_action = function(){
   } else if (($('.payment').is(':visible'))){
     $('.payment').hide();
     $('.last-slide').show();
-  } else {
+  } else if (($('.last-slide').is(':visible'))){
     $('.last-slide').hide();
     $('.donate-footer').hide()
     $('.donate-header').html(`<h2>Processing your donation...</h2>
