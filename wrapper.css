@@ -1,9 +1,9 @@
-ph::placeholder {
-    color: #322a7e;
-    opacity: 0.5;
+input::placeholder {
+    color: #322a7e !important;
+    opacity: 0.5 !important;
 }
 
-ph::-webkit-input-placeholder {
-    color: #322a7e;
-    opacity: 0.5;
+input::-webkit-input-placeholder {
+    color: #322a7e !important;
+    opacity: 0.5 !important;
 }

@@ -21,8 +21,7 @@ $('.__layout_page').css({'width': '80%',
                          'margin': '0 auto',
                          'background-color': '#fff',
                          'color': '#fff',
-                         'border-radius': '20px',
-                         'min-height': '250px'});
+                         'border-radius': '20px'});
 
 //=============================
 // hide unneccessary menu items
@@ -61,7 +60,7 @@ $(`#CreditCardForm > h3:nth-child(11),
 $('#CreditCardForm > table > tbody > tr > td').hide();
 
 // hide form entirely
-//$('#CreditCardForm').hide()
+$('#CreditCardForm').hide()
 
 //=============================
 // page background
@@ -85,8 +84,7 @@ var widget_content = `
     <div class="donate-header">
         <h2>Chip in to power our community!</h2>
     </div>
-    <div class="spacer row" style="height: 15px;"></div>
-    <div class="donate-body" style="max-height: 500px; background-color: #fff;">
+    <div class="donate-body _wrap_form" style="max-height: 500px; background-color: #fff;">
         <div class="form-wrapper row"></div>
     </div>
     <div class="donate-footer" style="height: 100px;">
@@ -168,60 +166,60 @@ var amounts_content = `
 `
 
 var contact_1_content = `
-    <table class="contact-1" style="display:none;">
-        <tbody>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Title">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Forename">
-                </td>
-            </tr>
-                <td>
-                    <input class="row" size="4" placeholder="Surname">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Email address">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="contact-1" style="display:none;">
+        <h3 style="margin-bottom: 30px;">Your Contact Details</h3>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="Title" class="required" placeholder="Title" id="Title" maxlength="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="FirstName" class="required" placeholder="First Name*" id="FirstName" maxlength="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="LastName" class="required" placeholder="Last Name*" id="LastName" maxlength="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="EmailAddress" class="required" placeholder="Email Address*" id="EmailAddress" maxlength="50">
+            </div>
+        </div>
+    </div>
 `
 
 var contact_2_content = `
-    <table class="contact-2" style="display: none;">
-        <tbody>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Address Line 1">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Address Line 2">
-                </td>
-            </tr>
-                <td>
-                    <input class="row" size="4" placeholder="Town">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="County">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="row" size="4" placeholder="Postcode">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="contact-2" style="display: none;">
+        <h3 style="margin-bottom: 30px;">Your Address</h3>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="Address1" class="" placeholder="Address Line 1" id="Address1" maxlength="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="Address2" class="" placeholder="Address Line 2" id="Address2" maxlength="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="Town" class="" placeholder="Town" id="Town" maxlength="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="County" class="" placeholder="County" id="County" maxlength="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <input type="text" name="Postcode" class="" placeholder="Postcode" id="Postcode" maxlength="10">
+            </div>
+        </div>
+    </div>
 `
 
 
@@ -261,6 +259,22 @@ var last_slide_content = `
     <div><p>Gift Aid and end</p></div>
 `
 
+var post_donation = `
+    <h2>Success - thank you for your donation!</h2>
+    <div class="row">
+        <p style="color: #322a7e;">Please help us spread the word to your friends on Facebook, Whatsapp or by email.</p>
+    </div
+    <div class="row" style="padding-top: 20px;">
+        <button class="last-button" style="background-color: #2f55a4;">Share on Facebook</button>
+    </div>
+    <div class="row">
+        <button class="last-button" style="background-color: #25d366;">Share on Whatsapp</button>
+    </div>
+    <div class="row">
+        <button class="last-button" style="background-color: #322a7e;">Share by email</button>
+    </div>
+`
+
 
 //=============================
 // make the form work
@@ -291,8 +305,8 @@ $('#CreditCardForm').css({'width': '75%',
                           'margin': '0 auto'});
 
 // buttons and other
-$('.amounts, .contact-1').css({'width': '90%',
-                               'margin': '0 auto'});
+$('.amounts, .contact-1, .contact-2, .payment').css({'width': '90%',
+                                                     'margin': '0 auto'});
 $('.radio').css('font-weight', 'bolder');
 $('.amount-button').css({'background-color': '#322a7e',
                          'color': '#00eeb6',
@@ -325,8 +339,20 @@ next_action = function(){
     $('.last-slide').show();
   } else {
     $('.last-slide').hide();
-    $('.donate-footer').hide();
-    $('.donate-header').html('<h2>Thank you for your donation!</h2>')
+    $('.donate-footer').hide()
+    $('.donate-header').html(`<h2>Processing your donation...</h2>
+                              <img src="https://www.reverserett.org.uk/core/media/spinner.gif"
+                                   style="margin: 0 auto; max-height: 30px; padding-top: 10px;">`);
+    setTimeout(function() {
+        $('.donate-header').html(post_donation);
+        // styling last-button
+        $('.last-button').css({'color': '#fff',
+                               'padding-left': '0px',
+                               'padding-right': '0px',
+                               'background-image': 'unset',
+                               'border-radius': '8px',
+                               'width': '100%'})
+    }, 3000);
   }
 }
 
